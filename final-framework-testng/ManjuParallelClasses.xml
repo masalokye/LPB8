@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Test-class Suite" parallel="classes" thread-count="3" >
+  <test name="Test-class test" >
+    <classes>
+       <class name = "com.training.sanity.tests.AddProductRTTC_0082Tests" />
+         <class name = "com.training.sanity.tests.AdminFilterRTTC22TC03Tests" />
+         <class name = "com.training.sanity.tests.PasswordMismatchRTTC_0071Tests" />
+    </classes>
+  </test>
+</suite>
