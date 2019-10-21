@@ -13,14 +13,18 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.AddProductRTTC09TC02;
+//import com.training.pom.AddProductRTTC09TC02;
+import com.training.pom.AdminLoginPOM;
+import com.training.pom.Simple009_022POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
-
-public class AddProductRTTC_0082Tests {
+//To Verify whether application displays appropriate search products based on the user preference
+public class Add_Product_RTTC_2009Tests {
 	private WebDriver driver;
 	private String baseUrl;
-	private AddProductRTTC09TC02 addProductRTTC09TC02;
+	//private AddProductRTTC09TC02 addProductRTTC09TC02;
+	private AdminLoginPOM adminLoginPOM;
+	private Simple009_022POM simple009_022POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -34,7 +38,8 @@ public class AddProductRTTC_0082Tests {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.FIREFOX);
-		addProductRTTC09TC02 = new AddProductRTTC09TC02(driver);
+		adminLoginPOM = new AdminLoginPOM(driver);
+		simple009_022POM = new Simple009_022POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -52,15 +57,15 @@ public class AddProductRTTC_0082Tests {
 	@Test 
 	public void addProduct() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		addProductRTTC09TC02.searchBtn();
-		addProductRTTC09TC02.sendSearchItem("Iaculis");
-		addProductRTTC09TC02.searchBtn();
-		addProductRTTC09TC02.selectItem();
-		String prodNamebc = addProductRTTC09TC02.beforeCart();
+		simple009_022POM.searchBtn();
+		simple009_022POM.sendSearchItem("Iaculis");
+		simple009_022POM.searchBtn();
+		simple009_022POM.selectItem();
+		String prodNamebc = simple009_022POM.beforeCart();
 		System.out.println(prodNamebc);
-		addProductRTTC09TC02.addTocart();
-		addProductRTTC09TC02.popUpclk();
-		String prodNameac = addProductRTTC09TC02.AfterCart();
+		simple009_022POM.addTocart();
+		simple009_022POM.popUpclk();
+		String prodNameac = simple009_022POM.AfterCart();
 		System.out.println(prodNameac);
 		Assert.assertEquals(prodNamebc, prodNameac);
 	}

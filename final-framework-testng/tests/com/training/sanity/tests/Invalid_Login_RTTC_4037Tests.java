@@ -3,7 +3,9 @@ package com.training.sanity.tests;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.RTTC_037_POM;
+import com.training.pom.AdminLoginPOM;
+import com.training.pom.Simple009_022POM;
+//import com.training.pom.RTTC_037_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -18,12 +20,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-
-public class RTTC_037_Tests {
+//To verify whether application denies admin getting logged in upon entering invalid credentials in required field
+public class Invalid_Login_RTTC_4037Tests {
 	
 	private WebDriver driver;
 	private String Url;
-	private RTTC_037_POM rttc_037_POM;
+	private AdminLoginPOM adminLoginPOM;
+	private Simple009_022POM simple009_022POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -37,7 +40,8 @@ public class RTTC_037_Tests {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.FIREFOX);
-		rttc_037_POM = new RTTC_037_POM(driver);
+		adminLoginPOM = new AdminLoginPOM(driver);
+		simple009_022POM = new Simple009_022POM(driver);
 		Url = properties.getProperty("Url");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -56,11 +60,11 @@ public class RTTC_037_Tests {
   @Test(dataProvider = "dp")
   public void invalidCredentials(String userName037, String password037) {
 	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		rttc_037_POM.sendUserName037(userName037);
-		rttc_037_POM.sendPassword037(password037);
-		rttc_037_POM.clickLoginBt037();
+	  simple009_022POM.sendUserNam(userName037);
+	  simple009_022POM.sendPasswor(password037);
+	  simple009_022POM.clickLoginBt();
 		String manual = "No match for Username and/or Password";
-		String auto = rttc_037_POM.passwordMismatch037();
+		String auto = adminLoginPOM.passwordMismatch037();
 		Assert.assertTrue(auto.contains(manual));
   }
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="Failed suite [Test-class Suite]" parallel="classes">
+  <test thread-count="3" name="Test-class test(failed)" parallel="classes">
+    <classes>
+      <class name="com.training.sanity.tests.AddProductRTTC_0082Tests">
+        <methods>
+          <include name="setUpBeforeClass"/>
+          <include name="addProduct"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.training.sanity.tests.AddProductRTTC_0082Tests -->
+      <class name="com.training.sanity.tests.PasswordMismatchRTTC_0071Tests">
+        <methods>
+          <include name="changePasswordMismatchTest"/>
+          <include name="setUpBeforeClass"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.training.sanity.tests.PasswordMismatchRTTC_0071Tests -->
+      <class name="com.training.sanity.tests.AdminFilterRTTC22TC03Tests">
+        <methods>
+          <include name="setUpBeforeClass"/>
+          <include name="adminFilter"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.training.sanity.tests.AdminFilterRTTC22TC03Tests -->
+    </classes>
+  </test> <!-- Test-class test(failed) -->
+</suite> <!-- Failed suite [Test-class Suite] -->

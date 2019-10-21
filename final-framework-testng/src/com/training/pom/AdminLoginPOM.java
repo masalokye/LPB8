@@ -1,18 +1,23 @@
 package com.training.pom;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
-public class LoginPOM {
+public class AdminLoginPOM {
 	private WebDriver driver; 
 	
-	public LoginPOM(WebDriver driver) {
+	public AdminLoginPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
 	
+	
+	//RTTC_008 01 New Password Miss match
 	@FindBy(xpath="//i[@class='fa fa-user-o']")
 	private WebElement myAccount; 
 	
@@ -45,6 +50,22 @@ public class LoginPOM {
 	
 	@FindBy(xpath="//div[@class='text-danger']")
 	private WebElement passwordConfirmation;
+	
+	
+		
+		//RTC037 04 invalid admin id or pwd
+		@FindBy(xpath="//div[@class='alert alert-danger']")
+		private WebElement passwordConfirmation037;
+
+
+		//RTC037 04 invalid admin id or pwd
+		public String passwordMismatch037() {
+			return this.passwordConfirmation037.getText();
+		}
+
+		
+		
+		//RTTC_008 01 New Password Miss match
 	
 	public void clickMyAccount() {
 		this.myAccount.click();
@@ -88,6 +109,11 @@ public class LoginPOM {
 	public String passwordMismatch() {
 		return this.passwordConfirmation.getText();
 	}
+	
+	
+		
+		
+
 
 	
 }

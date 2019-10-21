@@ -3,6 +3,7 @@ package com.training.readexcel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
+import java.util.Properties;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -26,7 +27,7 @@ public class ApachePOIExcelRead {
 		try {
 			System.out.println("File Name Got " + fileName);
 			FileInputStream file = new FileInputStream(new File(fileName));
-
+			//File sf = new File("C:\\Users\\ms130k\\Desktop\\Selenium_ITO\\LPB8\\TestData2Manju.xlsx");
 			// Create Workbook instance holding reference to .xlsx file
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
 
@@ -60,17 +61,24 @@ public class ApachePOIExcelRead {
 					// Check the cell type and format accordingly
 					switch (cell.getCellType()) {
 
-					case Cell.CELL_TYPE_NUMERIC:
+					case NUMERIC:
 						
 						if(((Double) cell.getNumericCellValue()).toString()!=null){
 							tempList1[cellCount] = ((Double) cell.getNumericCellValue()).toString(); 
 						} 
 						break;
-					case Cell.CELL_TYPE_STRING:
+					case STRING:
 						if(cell.getStringCellValue()!=null){
 							tempList1[cellCount] =cell.getStringCellValue();
 						}
 						break;
+					case BLANK:
+						if(cell.getStringCellValue()!=null){
+							tempList1[cellCount] ="";
+						}
+						break;
+						
+						
 					}
 					cellCount ++; 
 				}
@@ -89,8 +97,11 @@ public class ApachePOIExcelRead {
 	}
 
 	public static void main(String[] args) {
-		String fileName = "C:/Users/Naveen/Desktop/Testing.xlsx";
-		
+		//String fileName = "C:/Users/Naveen/Desktop/Testing.xlsx";
+		//String fileName = "C:/Users/ms130k/Desktop/Selenium_ITO/LPB8/TestData2Manju.xlsx";
+		//String fileName =  Properties.getProperty("excelfile67");
+		//String [][] list3 = new ApachePOIExcelRead().getExcelContent(fileName);
+		String fileName = "C:/Users/ms130k/Desktop/Selenium_ITO/LPB8/RTTC067.xlsx";
 		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName)){
 			for(String  tt : temp){
 				System.out.println(tt);
